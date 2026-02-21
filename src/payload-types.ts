@@ -200,7 +200,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MainHeroBannerBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -781,6 +781,21 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mainHeroBannerBlock".
+ */
+export interface MainHeroBannerBlock {
+  bgImage?: (string | null) | Media;
+  name: string;
+  staticText: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mainHeroBannerBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1087,6 +1102,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        mainHeroBannerBlock?: T | MainHeroBannerBlockSelect<T>;
       };
   meta?:
     | T
@@ -1183,6 +1199,20 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mainHeroBannerBlock_select".
+ */
+export interface MainHeroBannerBlockSelect<T extends boolean = true> {
+  bgImage?: T;
+  name?: T;
+  staticText?: T;
+  description?: T;
+  buttonText?: T;
+  buttonLink?: T;
   id?: T;
   blockName?: T;
 }

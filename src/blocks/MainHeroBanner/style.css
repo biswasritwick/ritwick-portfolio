@@ -1,0 +1,5 @@
+.hero-section-content{
+    *{
+        color: var(--text-color-light);
+    }
+}
